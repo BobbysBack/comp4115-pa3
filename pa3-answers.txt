@@ -1,0 +1,133 @@
+Bobby Richmond
+3/31/15
+DB
+Strange
+PA3
+
+Part 1)
+
+Unsure if a function or procedure is desired...doing both.
+
+Procedure:
+
+mysql> create procedure exp(x int, y int)
+    -> select x*y;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call exp(2,3);
++------+
+| x*y  |
++------+
+|    6 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+
+Function:
+
+mysql> create function exp2(x int, y int) returns int
+    -> return x*y;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select exp2(2,3);
++-----------+
+| exp2(2,3) |
++-----------+
+|         6 |
++-----------+
+1 row in set (0.01 sec)
+
+
+Part 2)
+Unable to get UDFs working on Windows. Putting in .cpp code with the partially working functions in hopes of partial credit.
+
+Part 3)
+procedures are getMatching(varchar), getAvg(char), and getNumSex(char)...
+
+mysql> call getMatching("Bouloucos");
++---------------+-----------+
+| first_name    | last_name |
++---------------+-----------+
+| Cristinel     | Bouloucos |
+| Vishv         | Bouloucos |
+| Kazuhide      | Bouloucos |
+| Oguz          | Bouloucos |
+| Gennady       | Bouloucos |
+...
+195 rows in set (0.08 sec)
+
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> call getMatching("Peac");
++----------------+-----------+
+| first_name     | last_name |
++----------------+-----------+
+| Sumant         | Peac      |
+| Bedir          | Peac      |
+| Mooi           | Peac      |
+| Jeong          | Peac      |
+| Suebskul       | Peac      |
+| Shakhar        | Peac      |
+...
+183 rows in set (0.08 sec)
+
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> call getMatching("Richmond");
+Empty set (0.08 sec)
+
+Query OK, 0 rows affected (0.08 sec)
+:(
+
+mysql> call getAvg('d001');
++---------+-----------+----------------+
+| dept_no | dept_name | average_salary |
++---------+-----------+----------------+
+| d001    | Marketing |     71913.2000 |
++---------+-----------+----------------+
+1 row in set (0.08 sec)
+
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> call getAvg('d005');
++---------+-------------+----------------+
+| dept_no | dept_name   | average_salary |
++---------+-------------+----------------+
+| d005    | Development |     59478.9012 |
++---------+-------------+----------------+
+1 row in set (0.30 sec)
+
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> call getNumSex('m');
++----------+
+| count(*) |
++----------+
+|   179973 |
++----------+
+1 row in set (0.06 sec)
+
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> call getNumSex('f');
++----------+
+| count(*) |
++----------+
+|   120051 |
++----------+
+1 row in set (0.06 sec)
+
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> call getNumSex('d');
++------------------------+
+| Invalid sex specified. |
++------------------------+
+| Invalid sex specified. |
++------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
